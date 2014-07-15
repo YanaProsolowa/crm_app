@@ -1,6 +1,8 @@
 CrmApp::Application.routes.draw do
+  devise_for :users
+  resources :users
   get "users/new"
-
+  match '/profile', to: 'users#show', via: 'get'
   match '/signup', to: 'users#new', via: 'get'
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

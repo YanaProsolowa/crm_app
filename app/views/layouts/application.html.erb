@@ -18,14 +18,23 @@
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Главная",    root_path %></li>
-          <li><%= link_to "Вход",    '#' %></li>
-          <li><%= link_to "Регистрация", signup_path %></li>
+          <% if user_signed_in? %>
+              <li><span>Здравствуйте, <%= "#{current_user.name} #{current_user.surname}" %></span></li>
+              <li> <%= link_to 'Моя страница', profile_path %></li>
+              <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+              <li> <%= link_to 'Войти', new_user_session_path %></li><li><%= link_to ' или Зарегистрироваться', new_user_registration_path %> </li>
+          <% end %>
+
+
         </ul>
       </nav>
     </div>
   </div>
 </header>
 <div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <%= yield %>
 </div>
 </head>

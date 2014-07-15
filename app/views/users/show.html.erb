@@ -1,0 +1,59 @@
+<table>
+<tr>
+<div class="row">
+  <aside class="span4">
+    <section>
+  <td class="tab">
+      <h2>
+        Фамилия:
+      </h2>
+  </td>
+  <td class="tab">
+      <h2>
+        <%= current_user.surname %>
+      </h2>
+  </td>
+    </section>
+  </aside>
+</div>
+</tr>
+<tr>
+  <div class="row">
+     <aside class="span4">
+        <section>
+          <td class="tab">
+            <h2>
+              Имя:
+            </h2>
+          </td>
+          <td class="tab">
+            <h2>
+              <%= current_user.name %>
+            </h2>
+          </td>
+        </section>
+      </aside>
+    </div>
+  </tr>
+
+  <% if current_user.otch != "" %>
+  <tr>
+    <div class="row">
+      <aside class="span4">
+        <section>
+          <td class="tab">
+            <h2>
+              Отчество:
+            </h2>
+          </td>
+          <td class="tab">
+            <h2>
+              <%= current_user.otch %>
+            </h2>
+          </td>
+        </section>
+      </aside>
+    </div>
+  </tr>
+      <% end %>
+</table>

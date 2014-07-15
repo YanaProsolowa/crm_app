@@ -1,0 +1,34 @@
+<h1>Регистрация</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+<%= form_for(User.new, :url => registration_path(:user)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label "Фамилия" %>
+  <%= f.text_field :surname, :autofocus => true  %></div>
+
+  <div><%= f.label "Имя" %>
+  <%= f.text_field :name %></div>
+
+  <div><%= f.label "Отчество" %>
+  <%= f.text_field :otch %></div>
+
+  <div><%= f.label "Телефон" %>
+  <%= f.text_field :phone_number %></div>
+
+    <div><%= f.label :email %>
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label "Пароль" %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label "Подтвердите пароль" %>
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Зарегистрироваться", class: "btn btn-large btn-primary" %></div>
+<% end %>
+  </div>
+</div>
+
+<%= render "devise/shared/links" %>
