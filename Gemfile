@@ -21,6 +21,7 @@ gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'devise', '3.2.2'
+gem "cancan", '1.6.7'
 gem 'sprockets', '2.11.0'
 
 group :doc do
