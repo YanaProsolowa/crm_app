@@ -23,6 +23,7 @@ gem 'jbuilder', '1.0.2'
 gem 'devise', '3.2.2'
 gem "cancan", '1.6.7'
 gem 'sprockets', '2.11.0'
+gem 'inherited_resources', '1.5.0'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719082618) do
+ActiveRecord::Schema.define(version: 20140721090825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "autos", force: true do |t|
+    t.datetime "release_date"
+    t.integer  "cost"
+    t.integer  "number_people"
+    t.integer  "min_age"
+    t.integer  "min_experience"
+    t.integer  "model_id"
+    t.integer  "region_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "autos", ["model_id"], name: "index_autos_on_model_id", using: :btree
+  add_index "autos", ["region_id"], name: "index_autos_on_region_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -33,19 +49,46 @@ ActiveRecord::Schema.define(version: 20140719082618) do
     t.datetime "updated_at"
   end
 
+  create_table "marks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "models", force: true do |t|
+    t.string   "name"
+    t.integer  "mark_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "models", ["mark_id"], name: "index_models_on_mark_id", using: :btree
+
   create_table "orders", force: true do |t|
-    t.datetime "date_get"
-    t.integer  "number_people"
+    t.string   "type"
     t.integer  "user_id"
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "data"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
