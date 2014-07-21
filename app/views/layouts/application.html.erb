@@ -17,9 +17,10 @@
       <%= link_to "CRM", '#', id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Главная",    root_path %></li>
+
           <% if user_signed_in? %>
               <li><span>Здравствуйте, <%= "#{current_user.name} #{current_user.surname}" %></span></li>
+              <li><%= link_to "Главная", user_root_path %></li>
               <li> <%= link_to 'Моя страница', profile_path %></li>
               <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
           <% else %>

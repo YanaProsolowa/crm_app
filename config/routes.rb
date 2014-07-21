@@ -1,10 +1,12 @@
 CrmApp::Application.routes.draw do
+  get "orders/new"
   devise_for :users
   resources :users
   get "users/new"
   match '/profile', to: 'users#show', via: 'get'
-  match '/signup', to: 'users#new', via: 'get'
-  root 'pages#home'
+  match '/signup',  to: 'users#new',  via: 'get'
+  match '/home',    to: 'pages#home', via: 'get', as: 'user_root'
+  root 'orders#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
